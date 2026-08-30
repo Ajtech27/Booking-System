@@ -44,7 +44,7 @@ def create_app():
 
 
  
-    '''# ── Register Blueprints ──
+    # ── Register Blueprints ──
     from app.routes.auth import auth_bp
     from app.routes.rooms import rooms_bp
     from app.routes.bookings import bookings_bp
@@ -56,11 +56,11 @@ def create_app():
     app.register_blueprint(admin_bp, url_prefix='/admin')
     
     # ── Home Route ──
-        @app.route('/')
-        def index():
-            return render_template('index.html')
+    @app.route('/')
+    def index():
+        return render_template('index.html')
             
-        return app
-    '''
+    return app
+    
 
     
