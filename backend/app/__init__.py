@@ -17,7 +17,7 @@ login_manager = LoginManager()
 migrate = Migrate()
 
 def create_app():
-    app = Flask(__name__, template_folder='../templates')
+    app = Flask(__name__)
     
     # ── Configuration ──
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
@@ -42,19 +42,17 @@ def create_app():
         from app.models import User
         return User.query.get(int(user_id))
 
-
- 
-   # ── Register Blueprints ──
-    from app.routes.auth import auth_bp
-    from app.routes.rooms import rooms_bp
-    from app.routes.bookings import bookings_bp
-    from app.routes.admin import admin_bp
+    # ── Register Blueprints ──
+    from routes.auth import auth_bp
+    from routes.rooms import rooms_bp
+    from routes.bookings import bookings_bp
+    from routes.admin import admin_bp
 
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(rooms_bp, url_prefix='/rooms')
     app.register_blueprint(bookings_bp, url_prefix='/bookings')
     app.register_blueprint(admin_bp, url_prefix='/admin')
-
+    
   
     @app.route('/')
     def index():
