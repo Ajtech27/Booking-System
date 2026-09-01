@@ -3,6 +3,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from app import db, bcrypt
 from app.models import User
 from app.forms import RegistrationForm, LoginForm
+from email_validator import validate_email, EmailNotValidError
+
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -16,7 +18,7 @@ def register():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(
             username=form.username.data,
-            email=form.email.data,
+            email=form.email,
             password_hash=hashed_password
         )
         db.session.add(user)

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -14,11 +14,12 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f8f9fa;
+            padding-top: 56px;  /* Reduced from default to match smaller navbar */
         }
 
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.2rem;  /* Smaller brand text */
         }
 
         .navbar-brand i {
@@ -28,8 +29,8 @@
         .footer {
             background: #2c3e50;
             color: white;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
+            padding: 0.75rem 0;  /* Reduced padding */
+            margin-top: 2rem;     /* Reduced margin */
             text-align: center;
         }
 
@@ -38,8 +39,13 @@
             text-decoration: none;
         }
 
+        .footer p {
+            font-size: 0.85rem;   /* Smaller footer text */
+            margin-bottom: 0;
+        }
+
         .container {
-            min-height: 70vh;
+            min-height: 60vh;     /* Reduced from 70vh */
         }
 
         .card {
@@ -66,16 +72,16 @@
         }
 
         .flash-messages {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── Navbar ─── -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- ─── Navbar (Reduced Size) ─── -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1 fixed-top">  <!-- py-1 for minimal padding -->
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">
+            <a class="navbar-brand" href="{{ url_for('index') }}" style="font-size: 1.1rem;">
                 <i class="fas fa-hotel"></i> HotelBooking
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -84,37 +90,37 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('rooms.list_rooms') }}">
+                        <a class="nav-link" href="{{ url_for('rooms.list_rooms') }}" style="font-size: 0.9rem;">
                             <i class="fas fa-bed"></i> Rooms
                         </a>
                     </li>
 
                     {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('bookings.my_bookings') }}">
+                            <a class="nav-link" href="{{ url_for('bookings.my_bookings') }}" style="font-size: 0.9rem;">
                                 <i class="fas fa-calendar-check"></i> My Bookings
                             </a>
                         </li>
                         {% if current_user.role == 'admin' %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('admin.dashboard') }}">
+                                <a class="nav-link" href="{{ url_for('admin.dashboard') }}" style="font-size: 0.9rem;">
                                     <i class="fas fa-user-cog"></i> Admin
                                 </a>
                             </li>
                         {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link text-warning" href="{{ url_for('auth.logout') }}">
+                            <a class="nav-link text-warning" href="{{ url_for('auth.logout') }}" style="font-size: 0.9rem;">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('auth.login') }}">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}" style="font-size: 0.9rem;">
                                 <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-light btn-sm px-3" href="{{ url_for('auth.register') }}">
+                            <a class="nav-link btn btn-outline-light btn-sm px-3" href="{{ url_for('auth.register') }}" style="font-size: 0.85rem;">
                                 Register
                             </a>
                         </li>
@@ -139,14 +145,14 @@
     </div>
 
     <!-- ─── Page Content ─── -->
-    <div class="container py-4">
+    <div class="container py-3">  <!-- Reduced padding -->
         {% block content %}{% endblock %}
     </div>
 
-    <!-- ─── Footer ─── -->
+    <!-- ─── Footer (Reduced Size) ─── -->
     <footer class="footer">
         <div class="container">
-            <p class="mb-0">
+            <p>
                 &copy; 2026 <strong>HotelBooking</strong> &mdash; Built with
                 <i class="fas fa-heart text-danger"></i> by Joseph Afolayan
             </p>

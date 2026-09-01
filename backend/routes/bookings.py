@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app import db
 from app.models import Room, Booking
 from app.forms import BookingForm
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta 
 
 bookings_bp = Blueprint('bookings', __name__)
 
@@ -60,7 +60,7 @@ def book_room(room_id):
         db.session.add(booking)
         db.session.commit()
         
-        flash(f'Room booked successfully! Total: ${"%.2f"|format(total_price)}', 'success')
+        flash('Room booked successfully! Total: ${:.2f}'.format(total_price), 'success')
         return redirect(url_for('bookings.my_bookings'))
     
     return render_template('bookings/book.html', form=form, room=room)
