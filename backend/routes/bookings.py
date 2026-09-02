@@ -60,7 +60,7 @@ def book_room(room_id):
         db.session.add(booking)
         db.session.commit()
         
-        flash('Room booked successfully! Total: ${:.2f}'.format(total_price), 'success')
+        flash(f'Room booked successfully! Total: ${total_price:.2f}', 'success')
         return redirect(url_for('bookings.my_bookings'))
     
     return render_template('bookings/book.html', form=form, room=room)
