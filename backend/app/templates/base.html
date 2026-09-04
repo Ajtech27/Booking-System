@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,118 +9,319 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
+        /* ─── Root Variables ─── */
+        :root {
+            --primary: #0a2e5c;
+            --primary-light: #1a4a7a;
+            --accent: #f7b731;
+            --accent-hover: #e5a520;
+            --text-dark: #1a1a2e;
+            --text-muted: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        /* ─── Base Layout ─── */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            padding-top: 56px;  /* Reduced from default to match smaller navbar */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding-top: 72px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.2rem;  /* Smaller brand text */
+        main {
+            flex: 1;
         }
 
-        .navbar-brand i {
-            color: #ffc107;
+        /* ─── Navbar ─── */
+        .navbar-custom {
+            background: var(--bg-white);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            padding: 0.7rem 0;
+            backdrop-filter: blur(12px);
         }
 
-        .footer {
-            background: #2c3e50;
+        .navbar-custom .navbar-brand {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-custom .navbar-brand i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .navbar-custom .nav-link {
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .navbar-custom .nav-link:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        .navbar-custom .nav-link i {
+            margin-right: 6px;
+            opacity: 0.7;
+        }
+
+        .btn-outline-light-custom {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn-outline-light-custom:hover {
+            background: var(--primary);
             color: white;
-            padding: 0.55rem 0;  /* Reduced padding */
-            margin-top: 1rem;     /* Reduced margin */
-            text-align: center;
         }
 
-        .footer a {
-            color: #ffc107;
-            text-decoration: none;
-        }
-
-        .footer p {
-            font-size: 0.85rem;   /* Smaller footer text */
-            margin-bottom: 0;
-        }
-
-        .container {
-            min-height: 60vh;     /* Reduced from 70vh */
-        }
-
-        .card {
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-        }
-
-        .btn-primary {
-            background: #6c63ff;
+        .btn-primary-custom {
+            background: var(--primary);
+            color: white;
             border: none;
+            font-weight: 600;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-size: 0.9rem;
         }
 
-        .btn-primary:hover {
-            background: #5a52d5;
+        .btn-primary-custom:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 46, 92, 0.25);
+            color: white;
         }
 
-        .btn-warning {
-            color: #212529;
+        /* ─── Cards ─── */
+        .card-modern {
+            background: var(--bg-white);
+            border: none;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            overflow: hidden;
         }
 
+        .card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-modern .card-header {
+            background: transparent;
+            border-bottom: 1px solid #f1f3f5;
+            padding: 1.25rem 1.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .card-modern .card-body {
+            padding: 1.5rem;
+        }
+
+        /* ─── Buttons ─── */
+        .btn-accent {
+            background: var(--accent);
+            color: var(--text-dark);
+            border: none;
+            font-weight: 600;
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(247, 183, 49, 0.35);
+            color: var(--text-dark);
+        }
+
+        .btn-outline-accent {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+            font-weight: 600;
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-accent:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary-solid {
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-primary-solid:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 46, 92, 0.3);
+            color: white;
+        }
+
+        /* ─── Badges ─── */
+        .badge-available {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        .badge-unavailable {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        /* ─── Flash Messages ─── */
         .flash-messages {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .alert-custom {
+            border: none;
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+        }
+
+        /* ─── Footer ─── */
+        .footer-custom {
+            background: var(--bg-white);
+            border-top: 1px solid #f1f3f5;
+            padding: 0.8rem 0;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .footer-custom a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-custom a:hover {
+            color: var(--accent);
+        }
+
+        /* ─── Utility ─── */
+        .text-accent {
+            color: var(--accent);
+        }
+        .text-primary-dark {
+            color: var(--primary);
+        }
+        .bg-soft-primary {
+            background: #e8edf5;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 64px;
+            }
+            .navbar-custom .navbar-brand {
+                font-size: 1.1rem;
+            }
+            .footer-custom {
+                font-size: 0.75rem;
+                padding: 0.6rem 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── Navbar (Reduced Size) ─── -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1 fixed-top">  <!-- py-1 for minimal padding -->
+    <!-- ─── Navbar ─── -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}" style="font-size: 1.1rem;">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
                 <i class="fas fa-hotel"></i> HotelBooking
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('rooms.list_rooms') }}" style="font-size: 0.9rem;">
+                        <a class="nav-link" href="{{ url_for('rooms.list_rooms') }}">
                             <i class="fas fa-bed"></i> Rooms
                         </a>
                     </li>
-
                     {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('bookings.my_bookings') }}" style="font-size: 0.9rem;">
+                            <a class="nav-link" href="{{ url_for('bookings.my_bookings') }}">
                                 <i class="fas fa-calendar-check"></i> My Bookings
                             </a>
                         </li>
                         {% if current_user.role == 'admin' %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('admin.dashboard') }}" style="font-size: 0.9rem;">
+                                <a class="nav-link" href="{{ url_for('admin.dashboard') }}">
                                     <i class="fas fa-user-cog"></i> Admin
                                 </a>
                             </li>
                         {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link text-warning" href="{{ url_for('auth.logout') }}" style="font-size: 0.9rem;">
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-outline-light-custom" href="{{ url_for('auth.logout') }}">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('auth.login') }}" style="font-size: 0.9rem;">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">
                                 <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-outline-light btn-sm px-3" href="{{ url_for('auth.register') }}" style="font-size: 0.85rem;">
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-primary-custom" href="{{ url_for('auth.register') }}">
                                 Register
                             </a>
                         </li>
@@ -135,7 +336,8 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    <div class="alert alert-custom alert-{{ category }} alert-dismissible fade show" role="alert">
+                        <i class="fas fa-{% if category == 'success' %}check-circle{% elif category == 'danger' %}exclamation-circle{% else %}info-circle{% endif %} me-2"></i>
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
@@ -144,15 +346,15 @@
         {% endwith %}
     </div>
 
-    <!-- ─── Page Content ─── -->
-    <div class="container py-3">  <!-- Reduced padding -->
+    <!-- ─── Main Content ─── -->
+    <main class="py-3">
         {% block content %}{% endblock %}
-    </div>
+    </main>
 
-    <!-- ─── Footer (Reduced Size) ─── -->
-    <footer class="footer">
-        <div class="container">
-            <p>
+    <!-- ─── Footer ─── -->
+    <footer class="footer-custom">
+        <div class="container text-center">
+            <p class="mb-0">
                 &copy; 2026 <strong>HotelBooking</strong> &mdash; Built with
                 <i class="fas fa-heart text-danger"></i> by Joseph Afolayan
             </p>
@@ -161,8 +363,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JS block -->
     {% block scripts %}{% endblock %}
 </body>
 </html>
