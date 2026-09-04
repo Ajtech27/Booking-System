@@ -4,47 +4,63 @@
 
 {% block content %}
 
-<div class="row align-items-center">
-    <div class="col-lg-6">
-        <h1 class="display-4 fw-bold">Welcome to <span class="text-primary">HotelBooking</span></h1>
-        <p class="lead">
-            Find and book the perfect room for your stay. Whether you're traveling for business or leisure,
-            we have the right room for you.
-        </p>
-        <p class="lead">
-            <a href="{{ url_for('rooms.list_rooms') }}" class="btn btn-primary btn-lg">
-                <i class="fas fa-search"></i> Browse Rooms
-            </a>
-            {% if not current_user.is_authenticated %}
-                <a href="{{ url_for('auth.register') }}" class="btn btn-outline-secondary btn-lg">
-                    <i class="fas fa-user-plus"></i> Get Started
-                </a>
-            {% endif %}
-        </p>
+<!-- Hero -->
+<section class="py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold text-primary-dark">
+                    Find Your <span class="text-accent">Perfect Stay</span>
+                </h1>
+                <p class="lead text-muted mt-3">
+                    Discover comfortable rooms, book instantly, and enjoy a seamless experience.
+                </p>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                    <a href="{{ url_for('rooms.list_rooms') }}" class="btn btn-primary-solid">
+                        <i class="fas fa-search"></i> Browse Rooms
+                    </a>
+                    {% if not current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-accent">
+                            <i class="fas fa-user-plus"></i> Get Started
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                <i class="fas fa-hotel" style="font-size: 8rem; color: var(--primary-light); opacity: 0.12;"></i>
+            </div>
+        </div>
     </div>
-    <div class="col-lg-6 text-center">
-        <i class="fas fa-hotel" style="font-size: 12rem; color: #6c63ff;"></i>
-    </div>
-</div>
+</section>
 
-<hr class="my-5" />
-
-<div class="row text-center">
-    <div class="col-md-4">
-        <i class="fas fa-bed fa-3x text-primary mb-3"></i>
-        <h5>Comfortable Rooms</h5>
-        <p>Choose from single, double, or suite rooms — all with premium amenities.</p>
+<!-- Features -->
+<section class="py-4 bg-soft-primary">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Why Choose Us</h2>
+        <div class="row g-3">
+            <div class="col-md-4 text-center">
+                <div class="card-modern p-3">
+                    <i class="fas fa-bed fa-2x text-accent mb-2"></i>
+                    <h6 class="fw-bold">Premium Rooms</h6>
+                    <p class="text-muted small">Single, double, or suite — all with modern amenities.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card-modern p-3">
+                    <i class="fas fa-calendar-check fa-2x text-accent mb-2"></i>
+                    <h6 class="fw-bold">Instant Booking</h6>
+                    <p class="text-muted small">Select dates, choose a room, confirm in seconds.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card-modern p-3">
+                    <i class="fas fa-headset fa-2x text-accent mb-2"></i>
+                    <h6 class="fw-bold">24/7 Support</h6>
+                    <p class="text-muted small">We're here before, during, and after your stay.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
-        <h5>Easy Booking</h5>
-        <p>Select your dates, choose a room, and confirm your reservation in seconds.</p>
-    </div>
-    <div class="col-md-4">
-        <i class="fas fa-headset fa-3x text-primary mb-3"></i>
-        <h5>24/7 Support</h5>
-        <p>Our team is here to assist you before, during, and after your stay.</p>
-    </div>
-</div>
+</section>
 
 {% endblock %}
