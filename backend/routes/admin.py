@@ -41,7 +41,7 @@ def add_room():
             price_per_night=form.price_per_night.data,
             description=form.description.data,
             capacity=form.capacity.data,
-            is_available=form.is_available.data
+            is_available=form.is_available.data == 'True' or form.is_available.data == True
         )
         db.session.add(room)
         db.session.commit()
@@ -64,7 +64,7 @@ def edit_room(room_id):
         room.price_per_night = form.price_per_night.data
         room.description = form.description.data
         room.capacity = form.capacity.data
-        room.is_available = form.is_available.data
+        room.is_available = form.is_available.data == 'True' or form.is_available.data == True
         
         db.session.commit()
         flash(f'Room {room.room_number} updated successfully!', 'success')

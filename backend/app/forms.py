@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField, SubmitField, SelectField, DateField, FloatField, TextAreaField
+from wtforms import StringField, EmailField, BooleanField, PasswordField, SubmitField, SelectField, DateField, FloatField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User
 
@@ -39,5 +39,5 @@ class RoomForm(FlaskForm):
     price_per_night = FloatField('Price per Night', validators=[DataRequired()])
     description = TextAreaField('Description')
     capacity = SelectField('Capacity', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4')], validators=[DataRequired()])
-    is_available = SelectField('Available', choices=[(True, 'Yes'), (False, 'No')], validators=[DataRequired()])
+    is_available = BooleanField('Available', validators=[DataRequired()])  #SelectField('Available', choices=[(True, 'Yes'), (False, 'No')], validators=[DataRequired()])
     submit = SubmitField('Save Room')
