@@ -54,9 +54,11 @@
                         {% endfor %}
                     </div>
 
+
                     <div class="mb-3">
                         {{ form.is_available.label(class="form-label") }}
-                        {{ form.is_available(class="form-select") }}
+                        {{ form.is_available(class="form-check-input") }}
+                        <label class="form-check-label" for="is_available">Yes, this room is available</label>
                         {% for error in form.is_available.errors %}
                             <span class="text-danger">{{ error }}</span>
                         {% endfor %}
