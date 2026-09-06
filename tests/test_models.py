@@ -1,4 +1,4 @@
-from backend.app.models import User, Room, Booking
+from app.models import User, Room, Booking
 from datetime import datetime, timedelta
 
 def test_user_model(app, test_user):
