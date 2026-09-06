@@ -38,10 +38,11 @@ def test_successful_login(client, test_user):
     """Test successful user login."""
     response = client.post('/auth/login', data={
         'email': 'test@example.com',
-        'password': 'password123'  # Note: This won't work without real password
+        'password': 'password123'   
     }, follow_redirects=True)
-    # The test will fail if the password doesn't match
-    # In a real test, you'd use the actual hashed password
+    assert response.status_code == 200
+    # Check for successful login message
+    assert b'Logged in successfully!' in response.data or b'Login successful' in response.data
 
 def test_room_detail_page(client, test_room):
     """Test room detail page loads."""
