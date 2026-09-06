@@ -1,6 +1,13 @@
+import sys
+import os
 import pytest
-from app import create_app, db
-from app.models import User, Room, Booking
+
+# Add the backend folder to Python path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+
+from backend.app import create_app, db
+from backend.app.models import User, Room, Booking
 
 @pytest.fixture
 def app():
