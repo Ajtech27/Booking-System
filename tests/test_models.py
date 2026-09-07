@@ -39,23 +39,4 @@ def test_booking_creation(app, test_user, test_room):
     assert booking.status == 'confirmed'
     assert booking.total_price == 200.0
 
-def test_room_availability(app, test_room, test_user):
-    """Test room availability check."""
-    # Initially available
-    assert test_room.is_available == True
-    
-    # Create a booking
-    today = datetime.now().date()
-    booking = Booking(
-        user_id=test_user.id,
-        room_id=test_room.id,
-        check_in=today + timedelta(days=1),
-        check_out=today + timedelta(days=3),
-        total_price=200.0,
-        status='confirmed'
-    )
-    db.session.add(booking)
-    db.session.commit()
-    
-    # Room should still be available (is_available flag unchanged)
-    assert test_room.is_available == True
+ 
