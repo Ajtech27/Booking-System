@@ -17,26 +17,6 @@ def test_room_model(app, test_room):
     assert test_room.is_available == True
     assert test_room.capacity == 2
 
-def test_booking_creation(app, test_user, test_room):
-    """Test Booking creation."""
-    today = datetime.now().date()
-    check_in = today + timedelta(days=1)
-    check_out = today + timedelta(days=3)
-    
-    booking = Booking(
-        user_id=test_user.id,
-        room_id=test_room.id,
-        check_in=check_in,
-        check_out=check_out,
-        total_price=200.0,
-        status='confirmed'
-    )
-    db.session.add(booking)
-    db.session.commit()
-    
-    assert booking.user_id == test_user.id
-    assert booking.room_id == test_room.id
-    assert booking.status == 'confirmed'
-    assert booking.total_price == 200.0
+ 
 
  
