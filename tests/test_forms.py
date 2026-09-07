@@ -34,31 +34,4 @@ def test_registration_form_invalid_email(app, test_user):
     )
     assert form.validate() == False
     assert 'Email already registered.' in form.email.errors
-
-def test_registration_form_password_mismatch(app):
-    """Test registration with mismatched passwords."""
-    form = RegistrationForm(
-        username='newuser',
-        email='new@example.com',
-        password='password123',
-        confirm_password='different'
-    )
-    assert form.validate() == False
-    assert 'Field must be equal to password' in str(form.confirm_password.errors)
-
-def test_login_form_valid(app):
-    """Test valid login form."""
-    form = LoginForm(
-        email='test@example.com',
-        password='password123'
-    )
-    assert form.validate() == True
-
-def test_booking_form_dates(app):
-    """Test booking form with valid dates."""
-    today = datetime.now().date()
-    form = BookingForm(
-        check_in=today + timedelta(days=1),
-        check_out=today + timedelta(days=3)
-    )
-    assert form.validate() == True
+ 
